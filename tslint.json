@@ -1,3 +1,47 @@
 {
-  "extends": "tslint:latest"
+  "extends": "tslint:latest",
+  "linterOptions": {
+    "exclude": [
+      "node_modules/*",
+      "web_app/dist/*"
+    ]
+  },
+  "jsRules": {
+    "quotemark": [
+      true,
+      "single",
+      "jsx-double"
+    ],
+    "semicolon": [
+      true,
+      "always"
+    ],
+    "trailing-comma": [
+      true,
+      {
+        "multiline": "never",
+        "singleline": "never"
+      }
+    ],
+    "object-literal-sort-keys": false
+  },
+  "rules": {
+    "quotemark": [
+      true,
+      "single",
+      "jsx-double"
+    ],
+    "semicolon": [
+      true,
+      "always"
+    ],
+    "trailing-comma": [
+      true,
+      {
+        "multiline": "never",
+        "singleline": "never"
+      }
+    ],
+    "object-literal-sort-keys": false
+  }
 }

@@ -2,3 +2,13 @@ body {
   padding: 20px;
   margin: 0;
 }
+
+.list-group-item {
+  cursor: pointer;
+  background-color: blueviolet;
+  color: yellow;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  padding-left: 3px;
+  width: 90px;
+}
