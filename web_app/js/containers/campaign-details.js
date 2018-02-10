@@ -1,7 +1,31 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Chart from 'chart.js';
+import { ChartOptions } from './details-chart-options';
 
 class CampaignDetails extends Component {
+  componentDidMount() {
+    let chartCanvas = this.refs.chart;
+
+    let myChart = new Chart(chartCanvas, {
+      type: 'line',
+      data: this.props.data,
+      options: ChartOptions
+    });
+
+    this.setState({ chart: myChart });
+  }
+
+  componentDidUpdate() {
+    let chart = this.state.chart;
+    let data = this.props.data;
+
+    data.datasets.forEach((dataset, i) => chart.data.datasets[i].data = dataset.data);
+
+    chart.data.labels = data.labels;
+    chart.update();
+  }
+
   render() {
     let noDetailsMessage = '';
     let details = '';
@@ -20,6 +44,7 @@ class CampaignDetails extends Component {
         <button onClick={() => this.props.history.push('/')}>All campaigns</button>
         {noDetailsMessage}
         {details}
+        <canvas ref={'chart'} width={400} height={300}></canvas>
       </div>
     );
   }
@@ -27,7 +52,8 @@ class CampaignDetails extends Component {
 
 function mapStateToProps(state) {
   return {
-    campaign: state.activeCampaign
+    campaign: state.activeCampaign,
+    data: state.chartData
   };
 }
 

@@ -24,23 +24,36 @@ class CampaignList extends Component {
   renderList() {
     return this.props.campaignList.map((campaign) => {
       return (
-        <li
-          key={campaign.id}
-          onClick={() => {
-            this.props.selectCampaign(campaign);
-            this.props.history.push('/details');
-          }}
-          className="list-group-item">{campaign.name}
-        </li>
+        <tr key={campaign.id}>
+          <td>{campaign.status}</td>
+          <td>{campaign.name}</td>
+          <td>{campaign.daily_budget}</td>
+          <td>{campaign.total_budget}</td>
+          <td>
+            <button onClick={() => {
+              this.props.selectCampaign(campaign);
+              this.props.history.push('/details');
+            }}>Stats</button>
+          </td>
+        </tr>
       );
     });
   }
 
   render() {
     return (
-      <ul className="list-group">
-        {this.renderList()}
-      </ul>
+      <table className="campaign-list">
+        <thead>
+          <tr>
+            <td>Status</td>
+            <td>Name</td>
+            <td>Daily Budget</td>
+            <td>Total Budget</td>
+            <td></td>
+          </tr>
+        </thead>
+        <tbody>{this.renderList()}</tbody>
+      </table>
     );
   }
 }
