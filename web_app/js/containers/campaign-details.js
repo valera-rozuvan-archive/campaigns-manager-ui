@@ -3,15 +3,23 @@ import { connect } from 'react-redux';
 
 class CampaignDetails extends Component {
   render() {
+    let noDetailsMessage = '';
+    let details = '';
+
     if (!this.props.campaign) {
-      return (
-        <div>Click one of the campaigns to see details.</div>
-      );
-    }
-    return (
-      <div>
+      noDetailsMessage = <div>No campaign selected.</div>;
+    } else {
+      details = <div>
         <h4>Details for: {this.props.campaign.name}</h4>
         <div>Budget: {this.props.campaign.budget}</div>
+      </div>;
+    }
+
+    return (
+      <div>
+        <button onClick={() => this.props.history.push('/')}>All campaigns</button>
+        {noDetailsMessage}
+        {details}
       </div>
     );
   }

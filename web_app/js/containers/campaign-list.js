@@ -9,7 +9,10 @@ class CampaignList extends Component {
       return (
         <li
           key={campaign.id}
-          onClick={() => this.props.selectCampaign(campaign)}
+          onClick={() => {
+            this.props.selectCampaign(campaign);
+            this.props.history.push('/details');
+          }}
           className="list-group-item">{campaign.name}
         </li>
       );

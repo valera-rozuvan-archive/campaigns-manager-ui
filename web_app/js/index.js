@@ -7,9 +7,14 @@ import { App } from './components/app';
 import { rootReducer } from './reducers';
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
+const appStore = createStoreWithMiddleware(
+  rootReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(rootReducer)}>
+  <Provider store={appStore}>
     <App />
-  </Provider>
-  , document.getElementById('app'));
+  </Provider>,
+  document.getElementById('app')
+);
