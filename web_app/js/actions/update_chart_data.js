@@ -1,6 +1,9 @@
-export function updateChartDataAction(data) {
+export function updateChartDataAction(campaignId, campaignData) {
   return {
-    type: 'UPDATE_CHART_DATA',
-    payload: data
+    type: 'NEW_CAMPAIGN_DATA',
+    payload: {
+      campaignId,
+      campaignData
+    }
   };
 }

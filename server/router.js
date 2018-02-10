@@ -26,6 +26,19 @@ Router.campaigns = (request, response) => {
   });
 };
 
+Router.campaignData = (request, response) => {
+  console.log(`request.url = ${request.url}`);
+  console.log(`campaignData: campaignId = ${request.params.campaignId}`);
+
+  fs.readFile(__dirname + `/data/${request.params.campaignId}/data.json`, 'utf8', (err, data) => {
+    if (err) {
+      throw err;
+    }
+
+    response.json(JSON.parse(data));
+  });
+};
+
 Router.unknownApiError = (request, response) => {
   response.status(404);
   response.send('The API does not contain a "' + request.url + '" route.');
