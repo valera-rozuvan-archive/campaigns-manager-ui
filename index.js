@@ -18,6 +18,7 @@ app.get('/', Router.index);
 app.get('/details', Router.index);
 
 app.get('/api/campaigns', Router.campaigns);
+app.get('/api/*', Router.unknownApiError);
 
 app.get('/error', Router.error);
 app.get('/*', Router.notFound);

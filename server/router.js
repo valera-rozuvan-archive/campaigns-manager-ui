@@ -26,4 +26,9 @@ Router.campaigns = (request, response) => {
   });
 };
 
+Router.unknownApiError = (request, response) => {
+  response.status(404);
+  response.send('The API does not contain a "' + request.url + '" route.');
+};
+
 module.exports = Router;

@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/valera-rozuvan/campaigns-manager-ui",
   "dependencies": {
+    "axios": "^0.17.1",
     "express": "^4.16.2",
     "livereload": "^0.6.3",
     "react": "^16.2.0",

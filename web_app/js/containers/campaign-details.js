@@ -11,7 +11,7 @@ class CampaignDetails extends Component {
     } else {
       details = <div>
         <h4>Details for: {this.props.campaign.name}</h4>
-        <div>Budget: {this.props.campaign.budget}</div>
+        <div>Budget: {this.props.campaign.total_budget}</div>
       </div>;
     }
 
