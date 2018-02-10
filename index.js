@@ -15,6 +15,9 @@ app.use(RouteLogMiddleware);
 app.use('/static', express.static('web_app'));
 
 app.get('/', Router.index);
+
+app.get('/api/campaigns', Router.campaigns);
+
 app.get('/error', Router.error);
 app.get('/*', Router.notFound);
 
