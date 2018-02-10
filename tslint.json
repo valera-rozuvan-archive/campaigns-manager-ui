@@ -23,7 +23,8 @@
         "singleline": "never"
       }
     ],
-    "object-literal-sort-keys": false
+    "object-literal-sort-keys": false,
+    "no-console": false
   },
   "rules": {
     "quotemark": [
@@ -42,6 +43,7 @@
         "singleline": "never"
       }
     ],
-    "object-literal-sort-keys": false
+    "object-literal-sort-keys": false,
+    "no-console": false
   }
 }

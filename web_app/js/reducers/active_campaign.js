@@ -3,6 +3,6 @@ export function ActiveCampaignReducer(state = null, action) {
     case 'CAMPAIGN_SELECTED':
       return action.payload;
   }
-  
+
   return state;
 }
