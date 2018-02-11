@@ -4,10 +4,10 @@ const ChartOptions = {
   responsive: false,
 
   // Width of the Chart
-  width: 400,
+  width: 600,
 
   // Height of the Chart
-  height: 300,
+  height: 400,
 
   // Boolean - Whether grid lines are shown across the chart
   scaleShowGridLines: true,

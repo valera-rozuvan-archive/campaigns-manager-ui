@@ -21,6 +21,10 @@ app.get('/api/campaigns', Router.campaigns);
 app.get('/api/campaigns/:campaignId/stats', Router.campaignData);
 app.get('/api/*', Router.unknownApiError);
 
+app.post('/api/campaigns/:campaignId/activate', Router.activateCampaign);
+app.post('/api/campaigns/:campaignId/deactivate', Router.deactivateCampaign);
+app.post('/api/*', Router.unknownApiError);
+
 app.get('/error', Router.error);
 app.get('/*', Router.notFound);
 

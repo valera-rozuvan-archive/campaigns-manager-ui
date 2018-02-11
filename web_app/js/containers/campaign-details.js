@@ -66,22 +66,41 @@ class CampaignDetails extends Component {
     let campaignChart = '';
 
     if (!this.props.campaign) {
-      noDetailsMessage = <div className="no-campaign-details">No campaign selected.</div>;
-    } else {
-      details = <div className="campaign-details">
-        <h4>Details for: {this.props.campaign.name}</h4>
-        <div>Budget: {this.props.campaign.total_budget}</div>
+      noDetailsMessage = <div className="col">
+        <h2>No campaign selected</h2>
       </div>;
-      campaignChart = <canvas className="campaign-chart" ref={'chart'} width="400" height="300"></canvas>;
+    } else {
+      details = <div className="col">
+        <h2>{this.props.campaign.name}</h2>
+      </div>;
+      campaignChart = <canvas className="campaign-chart" ref={'chart'} width="600" height="400"></canvas>;
     }
 
     return (
+      <div className="container">
+        <div className="row">
+          {noDetailsMessage}
+          {details}
+          <div className="col">
+            <button type="button" className="btn btn-light" onClick={() => this.props.history.push('/')}>
+              All Campaigns
+          </button>
+          </div>
+        </div>
+
+        <div className="row">
+          {campaignChart}
+        </div>
+      </div>
+
+      /*
       <div>
         <button onClick={() => this.props.history.push('/')}>All campaigns</button>
         {noDetailsMessage}
         {details}
         {campaignChart}
       </div>
+      */
     );
   }
 }

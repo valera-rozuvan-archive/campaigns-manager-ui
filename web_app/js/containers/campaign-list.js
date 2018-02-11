@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { selectCampaignAction } from '../actions/select_campaign';
 import { updateAllCampaignsAction } from '../actions/update_all_compaigns';
+import { updateCampaignStateAction } from '../actions/update_campaign_state';
 import { bindActionCreators } from 'redux';
 
 class CampaignList extends Component {
@@ -44,17 +45,23 @@ class CampaignList extends Component {
               >Actions</button>
 
               <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a className="dropdown-item" href="#">
-                  Deactivate
-                  </a>
                 <a className="dropdown-item" href="#" onClick={(e) => {
-                  e.stopPropagation();
-                  e.nativeEvent.stopImmediatePropagation();
+                  const toggleState = (campaign.status === 'ACTIVE') ? 'deactivate' : 'activate';
+
+                  axios.post(`/api/campaigns/${campaign.id}/${toggleState}`).then((data) => {
+                    const newState = (campaign.status === 'ACTIVE') ? 'INACTIVE' : 'ACTIVE';
+
+                    this.props.toggleCampaignState(campaign.id, newState);
+                  });
+                }}>
+                  {(campaign.status === 'ACTIVE' ? 'Deactivate' : 'Activate')}
+                </a>
+                <a className="dropdown-item" href="#" onClick={(e) => {
                   this.props.selectCampaign(campaign);
                   this.props.history.push('/details');
                 }}>
                   Stats
-                  </a>
+                </a>
               </div>
             </div>
           </td>
@@ -96,7 +103,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     selectCampaign: selectCampaignAction,
-    getCampaigns: updateAllCampaignsAction
+    getCampaigns: updateAllCampaignsAction,
+    toggleCampaignState: updateCampaignStateAction
   }, dispatch);
 }
 
