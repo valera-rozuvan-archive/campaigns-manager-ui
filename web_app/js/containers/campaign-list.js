@@ -25,15 +25,38 @@ class CampaignList extends Component {
     return this.props.campaignList.map((campaign) => {
       return (
         <tr key={campaign.id}>
-          <td>{campaign.status}</td>
+          <td>
+            <span
+              className={'badge badge-' + (campaign.status === 'ACTIVE' ? 'primary' : 'secondary')}
+            >{campaign.status}</span>
+          </td>
           <td>{campaign.name}</td>
           <td>{campaign.daily_budget}</td>
           <td>{campaign.total_budget}</td>
           <td>
-            <button onClick={() => {
-              this.props.selectCampaign(campaign);
-              this.props.history.push('/details');
-            }}>Stats</button>
+            <div className="dropdown show">
+              <button
+                className="btn btn-secondary btn-sm dropdown-toggle"
+                type="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >Actions</button>
+
+              <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a className="dropdown-item" href="#">
+                  Deactivate
+                  </a>
+                <a className="dropdown-item" href="#" onClick={(e) => {
+                  e.stopPropagation();
+                  e.nativeEvent.stopImmediatePropagation();
+                  this.props.selectCampaign(campaign);
+                  this.props.history.push('/details');
+                }}>
+                  Stats
+                  </a>
+              </div>
+            </div>
           </td>
         </tr>
       );
@@ -42,18 +65,24 @@ class CampaignList extends Component {
 
   render() {
     return (
-      <table className="campaign-list">
-        <thead>
-          <tr>
-            <td>Status</td>
-            <td>Name</td>
-            <td>Daily Budget</td>
-            <td>Total Budget</td>
-            <td></td>
-          </tr>
-        </thead>
-        <tbody>{this.renderList()}</tbody>
-      </table>
+      <div className="container">
+        <div className="row">
+          <table className="table table-bordered">
+            <thead>
+              <tr>
+                <th>Status</th>
+                <th>Name</th>
+                <th>Daily Budget</th>
+                <th>Total Budget</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.renderList()}
+            </tbody>
+          </table>
+        </div>
+      </div>
     );
   }
 }
