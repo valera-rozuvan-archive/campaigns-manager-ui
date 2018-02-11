@@ -92,15 +92,6 @@ class CampaignDetails extends Component {
           {campaignChart}
         </div>
       </div>
-
-      /*
-      <div>
-        <button onClick={() => this.props.history.push('/')}>All campaigns</button>
-        {noDetailsMessage}
-        {details}
-        {campaignChart}
-      </div>
-      */
     );
   }
 }
