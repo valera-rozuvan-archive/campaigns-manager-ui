@@ -1,5 +1,11 @@
 # Campaigns Manager UI
 
+## wip has moved
+
+Future work on this repository has moved to the monorepo [valera-rozuvan/experiments](https://github.com/valera-rozuvan/experiments). This repo is archived for historic purposes (to preserve commit history). Navigate over to [experiments/campaigns-manager-ui](https://github.com/valera-rozuvan/experiments/tree/main/campaigns-manager-ui) to see updates (if any).
+
+## introduction
+
 A demo UI application for a potential Campaigns Manager service.
 
 ## Run locally
